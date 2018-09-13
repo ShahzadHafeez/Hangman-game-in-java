@@ -51,21 +51,20 @@ public class Hangman {
 		Scanner scan=new Scanner(System.in);
 		
 		System.out.print("Your guess: ");
-		/*
-		String input=(scan.nextLine());
+		String input=(scan.nextLine()).toLowerCase();
 		
 		while(input.length()==0 || input.length()!=1 || (input.charAt(0)<97 || input.charAt(0)>=123)  )
 		{
 			
 			System.out.print("illegal Input! Your guess again: ");
-			input=(scan.nextLine());
+			input=(scan.nextLine()).toLowerCase();
 		}
-		*/
-		char c = scan.next().charAt(0);
+		
+		
 		scan.close();
 		
 		
-		return c;
+		return input.charAt(0);
 	}
 	
 	
