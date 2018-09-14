@@ -12,9 +12,10 @@ public class Hangman {
 	int guessLeft;
 	int guessCorrect;
 	
+	Scanner scan=new Scanner(System.in);
+	
 	{
 		System.out.println("Welcome to Hangman!");
-		System.out.println();
 	}
 	
 	Hangman()
@@ -42,26 +43,23 @@ public class Hangman {
 	
 	void print()
 	{
+		System.out.println();
 		System.out.println("The word now looks like this: "+guessWord);
 		System.out.println("You have "+guessLeft+" guesses Left.");
 	}
 	
 	char getInput()
 	{
-		Scanner scan=new Scanner(System.in);
-		
 		System.out.print("Your guess: ");
-		String input=(scan.nextLine()).toLowerCase();
+		String input = (scan.next()).toLowerCase();
+		
 		
 		while(input.length()==0 || input.length()!=1 || (input.charAt(0)<97 || input.charAt(0)>=123)  )
 		{
 			
 			System.out.print("illegal Input! Your guess again: ");
-			input=(scan.nextLine()).toLowerCase();
+			input=(scan.next()).toLowerCase();
 		}
-		
-		
-		scan.close();
 		
 		
 		return input.charAt(0);
@@ -109,8 +107,6 @@ public class Hangman {
 		print();
 		char guessChar=getInput();
 		
-		System.out.println("--> "+guessChar);
-		
 		int indexOfGuess=0;
 		
 		
@@ -135,18 +131,20 @@ public class Hangman {
 	
 	void play()
 	{
-		while(guessLeft > 0 || guessCorrect < wordLength  )
+		while(guessLeft > 0 && guessCorrect < wordLength  )
 		{
 			run();
 		}
 		
 		if (guessLeft<=0)
 		{
-			System.out.println("You lose.");
+			System.out.println();
+			System.out.println("---> You lose <---");
 		}
 		else
 		{
-			System.out.println("You win.");
+			System.out.println();
+			System.out.println("---> You win <---");
 		}
 		
 	}
