@@ -113,10 +113,12 @@ public class Hangman {
 		if (isCharExist(guessChar))
 		{
 			System.out.println("That guess is correct.");
-			indexOfGuess=findCharIndex(guessChar);
-			guessWord.setCharAt(indexOfGuess, guessChar);
-			
-			guessCorrect+=1;
+			while(isCharExist(guessChar)) {
+				indexOfGuess=findCharIndex(guessChar);
+				guessWord.setCharAt(indexOfGuess, guessChar);
+				
+				guessCorrect+=1;
+			}
 		}
 		else
 		{
@@ -139,6 +141,8 @@ public class Hangman {
 		if (guessLeft<=0)
 		{
 			System.out.println();
+			System.out.println("You are completely hung.");
+			System.out.println("The word was: "+secretWord );
 			System.out.println("---> You lose <---");
 		}
 		else
